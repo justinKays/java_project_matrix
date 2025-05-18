@@ -2,23 +2,23 @@ package tensor;
 
 import java.math.BigDecimal;
 
-class ScalarImpl implements Scalar {
+class ScalarImpl implements Scalar, Cloneable {
     private final BigDecimal scalar;
 
     //01
     ScalarImpl(String ss) {
-        scalar = new BigDecimal(ss);
+        this.scalar = new BigDecimal(ss);
     }
 
     //02
     ScalarImpl(double ii, double jj) {
         double randomVal = Math.random() * (jj - ii) + ii;
-        scalar = BigDecimal.valueOf(randomVal);
+        this.scalar = BigDecimal.valueOf(randomVal);
     }
 
     @Override
     public BigDecimal getScalar() {
-        return scalar;
+        return this.scalar;
     }
 
     //14
@@ -27,10 +27,26 @@ class ScalarImpl implements Scalar {
         return scalar.toString();
     }
 
-    //15 ing
+    //15
     @Override
-    public boolean equals(){
-        return true;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Scalar ss = (Scalar) obj;
+        return this.scalar.equals(ss.getScalar());
+    }
+
+//    16 ing
+//    @Override
+//    public int compareTo(Scalar ss){
+//        return this.scalar.compareTo(ss.getScalar());
+//    }
+
+    //17 ing
+    @Override
+    public Scalar clone(){
+        return null;
     }
 
 }

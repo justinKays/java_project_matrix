@@ -24,7 +24,7 @@ public class MatrixImpl implements Matrix{
         }
     }
 
-    //08 csv ing
+    //08 csv? ing
 //    MatrixImpl(int mm, int nn, int ii, int jj){
 //        this.matrix = new ArrayList<Vector>();
 //
@@ -33,16 +33,24 @@ public class MatrixImpl implements Matrix{
 //        }
 //    }
 
-    //09 ing
-//    MatrixImpl(double[][] arr){
-//        this.matrix = new ArrayList<Vector>();
-//
-//        for(double[] row: arr){
-//            Vector rowVector = new VectorImpl(row.length, dd);
-//            for(double dd: row){
-//            }
-//        }
-//    }
+//    09
+    MatrixImpl(double[][] arr){
+        this.matrix = new ArrayList<Vector>();
+
+        for(double[] row: arr){
+            this.matrix.add(new VectorImpl(row));
+        }
+    }
+
+    //10
+    MatrixImpl(int mm){
+        this.matrix = new ArrayList<Vector>();
+        double[][] arr = new double[mm][mm];
+        for(int i=0;i<mm;i++){
+            arr[i][i] = 1;
+            this.matrix.add(new VectorImpl(arr[i]));
+        }
+    }
 
     @Override
     public List<Vector> getMatrix(){
@@ -68,6 +76,16 @@ public class MatrixImpl implements Matrix{
     @Override
     public String toString(){
         return this.matrix.toString();
+    }
+
+    //15
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Matrix mm = (Matrix) obj;
+        return this.matrix.equals(mm.getMatrix());
     }
 
 }

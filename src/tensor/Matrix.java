@@ -9,5 +9,5 @@ public interface Matrix {
 
     int[] viewSize();
 
-    String toString();
+
 }

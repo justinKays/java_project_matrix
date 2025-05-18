@@ -9,5 +9,4 @@ public interface Vector {
 
     int viewSize();
 
-    String toString();
 }

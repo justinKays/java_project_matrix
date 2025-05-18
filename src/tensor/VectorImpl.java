@@ -55,4 +55,14 @@ public class VectorImpl implements Vector{
         return this.vector.toString();
     }
 
+    //15
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Vector vv = (Vector) obj;
+        return this.vector.equals(vv.getVector());
+    }
+
 }
